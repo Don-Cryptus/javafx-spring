@@ -1,20 +1,19 @@
-# Java + Maven + GitHub Actions = Native Desktop Apps
+# Java + Maven + Spring + GitHub Actions
 
-[JavaFX](https://openjfx.io) or Swing + [jpackage](https://docs.oracle.com/en/java/javase/18/docs/specs/man/jpackage.html) +
-  [Maven](http://maven.apache.org) template project for generating native desktop applications.
+[JavaFX](https://openjfx.io) [Maven](http://maven.apache.org) [Spring](https://spring.io/) template project for generating native desktop applications.
 
 # Goals
 
-1. Build nice, small cross-platform JavaFX or Swing desktop apps with native installers!
+1. Build nice, small cross-platform JavaFX & Spring desktop apps with native installers!
 2. Just use Maven - no shell scripts required!
 3. Use standard Maven dependency system to manage dependencies.
-4. Generate [MacOS (.dmg), Windows (.msi) and Unix (e.g. deb/rpm)](https://github.com/wiverson/maven-jpackage-template/releases)
+4. Generate [MacOS (.dmg), Windows (.msi) and Unix (e.g. deb/rpm)](https://github.com/Don-Cryptus/javafx-spring/releases)
 installers/packages in the cloud
-with [GitHub Actions](https://github.com/wiverson/maven-jpackage-template/tree/main/.github/workflows).
+with [GitHub Actions](https://github.com/Don-Cryptus/javafx-spring/tree/main/.github/workflows).
 
 Out of the box, this template generates "Hello World" installers - 30-40mb .dmg, .msi and .deb files. Check out the
 example builds in
-[releases](https://github.com/wiverson/maven-jpackage-template/releases).
+[releases](https://github.com/Don-Cryptus/javafx-spring/releases).
 
 If you are on MacOS, you notice the MacOS builds are not signed. Current versions of MacOS will report
 installers downloaded via browsers as damaged/unopenable. You can [clear this flag via the command-line](docs/apple-sign-notarize.md). As this is not a reasonable solution for end users, a GitHub Action is included to notarize, sign, and staple 
@@ -28,14 +27,12 @@ installer package for a JavaFX application. It can easily be adapted to work wit
 
 ## Requirements
 
-- [Java 18](https://bell-sw.com/pages/downloads/#/java-18-current).
+- [Java 17](https://bell-sw.com/pages/downloads/).
     - If you are using JavaFX, use an SDK that has JavaFX bundled:
-      - [Liberica with JavaFX](https://bell-sw.com/pages/downloads/#/java-18-current)
-      - [Azul Zulu with JavaFX](https://www.azul.com/downloads/?version=java-18-sts&package=jdk-fx)
-    - If you are using Swing, pretty much any Java 17 or 18 JDK will work.
+      - [Liberica with JavaFX](https://bell-sw.com/pages/downloads/)
 - [Maven](https://maven.apache.org/).
 - On MacOS XCode is required.
-- On Windows the free [WiX Toolset](https://wixtoolset.org/) is required.
+- **!IMPORTANT On Windows the free [WiX Toolset](https://wixtoolset.org/) is required.**
 
 ## Installation
 
@@ -45,9 +42,7 @@ If you are on MacOS or Linux, you can use [SDKMAN!](https://sdkman.io/) to simpl
 SDKMAN! is installed, you can run the following to install Liberica or Azul Zulu and Maven.
 
 ```bash
-sdk install java 18.0.2.fx-librca
-# or
-sdk install java 18.0.2.fx-zulu
+sdk install java 17.0.2.fx-zulu
 sdk current java
 sdk install maven
 ```
@@ -55,7 +50,7 @@ sdk install maven
 ## Installation Verification
 
 1. Verify that Java is installed by opening a fresh Terminal/Command Prompt and enter `java --version`. As of this 
-writing, the Java version should be 18.0.2 or later.
+writing, the Java version should be 17.0.2 or later.
 2. Verify that Maven is installed with `mvn --version`. Maven should be version 3.8.6 or later.
 3. Install platform-specific tools.
    1. **MacOS only:** Verify that XCode is installed & license accepted by a) launching it and b)
@@ -68,7 +63,7 @@ writing, the Java version should be 18.0.2 or later.
     - For reference, here is a complete run log for [a successful run](docs/sample-run.md).
 
 Because these builds use stripped down JVM images, the
-[generated installers are in the 30-40mb range](https://github.com/wiverson/maven-jpackage-template/releases).
+[generated installers are in the 30-40mb range](https://github.com/Don-Cryptus/javafx-spring/releases).
 
 On MacOS you should [add signing to avoid error messages](https://github.com/wiverson/maven-jpackage-template/issues/49)
 related to the security system(s).
@@ -93,8 +88,8 @@ Here are few cool things in this template:
 
 - Only uses Java and Maven. No shell scripts required.
 - Includes sample [GitHub Actions](https://github.com/wiverson/maven-jpackage-template/tree/main/.github/workflows) to
-  build MacOS, Windows and Linux installers. These GitHub Actions are configured to use the Liberica JDK 18 with 
-JavaFX to simplify the build process. If you prefer to use Azul Zulu, modify the distribution name to `distribution: 'zulu'` as described on the [Usage description of setup-java](https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Zulu) 
+  build MacOS, Windows and Linux installers. These GitHub Actions are configured to use the Liberica JDK 17 with 
+JavaFX to simplify the build process. 
 - Demonstrates setting the application icon
 - Builds a .dmg on MacOS, .msi on Windows, and .deb on Linux, but can be easily tweaked to generate other jpackage
 supported installers (e.g. .pkg)
@@ -155,28 +150,6 @@ you should be able to add those just like the other builds. Haven't tested it th
 server-side stuff. Feel free to post in
 the [discussion](https://github.com/wiverson/maven-jpackage-template/discussions) section and
 also check the [Q&A](docs/qna.md) if you are using Linux.
-
-### Can I Use this with Swing instead of JavaFX?
-
-tl;dr absolutely.
-
-Just delete the JavaFX stuff, including the JavaFX modules declarations in `pom.xml` and add a Swing main class instead.
-If you are reasonably familiar with Maven this shouldn't be very hard to do.
-
-I *highly* recommend the [FlatLaf](https://www.formdev.com/flatlaf/) as a must for working with Swing in 2022. That
-look-and-feel plus designers such as
-the [IntelliJ GUI Designer](https://www.jetbrains.com/help/idea/gui-designer-basics.html)
-or [JFormDesigner](https://www.formdev.com/jformdesigner/) can work very well, arguably with an easier learning curve
-than JavaFX.
-
-Suggested changes to the pom.xml for Swing:
-
-1. Remove the javafx modules from the jvm.modules property
-2. Remove the javafx.version property.
-3. Remove the three org.openjfx dependencies
-4. Remove the configuration/excludeGroupIds section from the maven-dependency-plugin
-5. Remove javafx-maven-plugin from the plugins list
-6. Remove the modulePath delcaration from the jtoolprovider-plugin execution/configuration
 
 # Debugging
 
