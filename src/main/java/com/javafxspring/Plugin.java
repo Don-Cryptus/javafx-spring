@@ -1,4 +1,4 @@
-package com.changenode;
+package com.javafxspring;
 
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;

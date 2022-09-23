@@ -1,8 +1,8 @@
-package com.changenode.plugin;
+package com.javafxspring.plugin;
 
-import com.changenode.BaseApplication;
-import com.changenode.Log;
-import com.changenode.Plugin;
+import com.javafxspring.BaseApplication;
+import com.javafxspring.Log;
+import com.javafxspring.Plugin;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 

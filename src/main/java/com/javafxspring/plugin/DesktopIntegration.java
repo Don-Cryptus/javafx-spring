@@ -1,7 +1,7 @@
-package com.changenode.plugin;
+package com.javafxspring.plugin;
 
-import com.changenode.Log;
-import com.changenode.Plugin;
+import com.javafxspring.Log;
+import com.javafxspring.Plugin;
 import javafx.concurrent.Task;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -15,7 +15,7 @@ import java.awt.*;
 import java.awt.Taskbar.Feature;
 import java.awt.image.BufferedImage;
 
-import static com.changenode.plugin.StandardMenus.Configure;
+import static com.javafxspring.plugin.StandardMenus.Configure;
 import static java.awt.Taskbar.getTaskbar;
 import static java.awt.Taskbar.isTaskbarSupported;
 

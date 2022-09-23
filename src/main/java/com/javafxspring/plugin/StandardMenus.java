@@ -1,7 +1,7 @@
-package com.changenode.plugin;
+package com.javafxspring.plugin;
 
-import com.changenode.Log;
-import com.changenode.Plugin;
+import com.javafxspring.Log;
+import com.javafxspring.Plugin;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

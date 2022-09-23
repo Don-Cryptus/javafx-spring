@@ -1,7 +1,7 @@
-package com.changenode.plugin;
+package com.javafxspring.plugin;
 
-import com.changenode.Log;
-import com.changenode.Plugin;
+import com.javafxspring.Log;
+import com.javafxspring.Plugin;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;

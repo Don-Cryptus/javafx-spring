@@ -1,6 +1,6 @@
-package com.changenode;
+package com.javafxspring;
 
-import com.changenode.plugin.*;
+import com.javafxspring.plugin.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
