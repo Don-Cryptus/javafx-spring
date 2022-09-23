@@ -1,6 +1,6 @@
 package com.javafxspring;
 
-import com.javafxspring.plugin.LogFile;
+import com.javafxspring.plugin.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -23,26 +23,26 @@ import static javax.swing.filechooser.FileSystemView.getFileSystemView;
 @SpringBootApplication()
 public class BaseApplication extends Application implements CommandLineRunner, Log {
     public static File outputFile;
-    private final Plugin[] plugins = new Plugin[]{
-            new LogFile()};
+    private final Plugin[] plugins = new Plugin[]{new StandardMenus(), new HelloWorld(), new FileDrop(),
+            new LogFile(), new DarkMode()};
     private TextArea textArea;
     private Label statusLabel;
 
     public static void main(String[] args) {
-        SpringApplication.run(BaseApplication.class, args);
-    }
-
-    @Override
-    public void run(String... args) {
         try {
             outputFile = File.createTempFile("debug", ".log", getFileSystemView().getDefaultDirectory());
+            System.out.println(outputFile.getAbsolutePath());
             PrintStream output = new PrintStream(new BufferedOutputStream(new FileOutputStream(outputFile)), true);
             System.setOut(output);
             System.setErr(output);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        SpringApplication.run(BaseApplication.class, args);
+    }
 
+    @Override
+    public void run(String... args) {
         launch(args);
     }
 

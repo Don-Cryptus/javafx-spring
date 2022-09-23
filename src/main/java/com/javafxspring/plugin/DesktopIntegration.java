@@ -1,6 +1,5 @@
 package com.javafxspring.plugin;
 
-
 import com.javafxspring.Log;
 import com.javafxspring.Plugin;
 import javafx.concurrent.Task;
