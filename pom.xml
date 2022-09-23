@@ -4,11 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
-    <!--    <groupId>org.springframework.boot</groupId>-->
-    <!--    <artifactId>spring-boot-starter-parent</artifactId>-->
-    <!--    <version>2.7.4</version>-->
-    <!--    <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     <parent>
         <groupId>net.rgielen</groupId>
         <artifactId>javafx-weaver-samples</artifactId>
@@ -77,11 +72,11 @@
         <!-- This dependency is a normal Maven dependency, here mainly as an example. It brings in other transitive
          dependencies as well. You can remove it from your project (unless you happen to need to generate test data.  -->
 
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-        <!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -96,11 +91,11 @@
         </dependency>
 
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.xerial</groupId>-->
-        <!--            <artifactId>sqlite-jdbc</artifactId>-->
-        <!--            <version>3.25.2</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.39.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
