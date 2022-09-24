@@ -1,5 +1,6 @@
 package com.javafxspring;
 
+import com.javafxspring.config.DbConfig;
 import com.javafxspring.plugin.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -11,17 +12,17 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.io.*;
 
 import static javax.swing.filechooser.FileSystemView.getFileSystemView;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-public class BaseApplication extends Application implements CommandLineRunner, Log {
+@SpringBootApplication()
+@ComponentScan(basePackageClasses = {BaseApplication.class, DbConfig.class})
+public class BaseApplication extends Application implements Log {
     public static File outputFile;
     private final Plugin[] plugins = new Plugin[]{new StandardMenus(), new HelloWorld(), new FileDrop(),
             new LogFile(), new DarkMode()};
@@ -38,12 +39,12 @@ public class BaseApplication extends Application implements CommandLineRunner, L
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SpringApplication.run(BaseApplication.class, args);
+        Application.launch();
     }
 
     @Override
-    public void run(String... args) {
-        launch(args);
+    public void init() {
+        SpringApplication.run(getClass()).getAutowireCapableBeanFactory().autowireBean(this);
     }
 
     public void log(String s) {
@@ -52,7 +53,7 @@ public class BaseApplication extends Application implements CommandLineRunner, L
         statusLabel.setText(s);
     }
 
-    @Override
+    //    @Override
     public void start(Stage stage) {
         BorderPane borderPane = new BorderPane();
 
