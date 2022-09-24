@@ -36,9 +36,9 @@ public class DbConfig {
         final Properties hibernateProperties = new Properties();
 
 
-        hibernateProperties.setProperty("hibernate.dialect", "com.javafxspring.dialect.SQLiteDialect");
+        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
 
-        hibernateProperties.setProperty("spring.jpa.database-platform", "com.javafxspring.dialect.SQLiteDialect");
+        hibernateProperties.setProperty("spring.jpa.database-platform", "org.hibernate.community.dialect.SQLiteDialect");
         hibernateProperties.setProperty("spring.jpa.hibernate.ddl-auto", "create-drop");
 
         return hibernateProperties;
