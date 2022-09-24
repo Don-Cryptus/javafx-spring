@@ -1,6 +1,5 @@
 package com.javafxspring;
 
-import com.javafxspring.config.DbConfig;
 import com.javafxspring.plugin.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -14,14 +13,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
-import java.io.*;
-
-import static javax.swing.filechooser.FileSystemView.getFileSystemView;
+import java.io.File;
 
 @SpringBootApplication()
-@ComponentScan(basePackageClasses = {BaseApplication.class, DbConfig.class})
 public class BaseApplication extends Application implements Log {
     public static File outputFile;
     private final Plugin[] plugins = new Plugin[]{new StandardMenus(), new HelloWorld(), new FileDrop(),
@@ -30,15 +25,15 @@ public class BaseApplication extends Application implements Log {
     private Label statusLabel;
 
     public static void main(String[] args) {
-        try {
-            outputFile = File.createTempFile("debug", ".log", getFileSystemView().getDefaultDirectory());
-            System.out.println(outputFile.getAbsolutePath());
-            PrintStream output = new PrintStream(new BufferedOutputStream(new FileOutputStream(outputFile)), true);
-            System.setOut(output);
-            System.setErr(output);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            outputFile = File.createTempFile("debug", ".log", getFileSystemView().getDefaultDirectory());
+//            System.out.println(outputFile.getAbsolutePath());
+//            PrintStream output = new PrintStream(new BufferedOutputStream(new FileOutputStream(outputFile)), true);
+//            System.setOut(output);
+//            System.setErr(output);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         Application.launch();
     }
 

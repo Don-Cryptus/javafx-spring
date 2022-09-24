@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
     <groupId>com.javafxspring</groupId>
     <artifactId>javafx-spring</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -12,13 +11,12 @@
     <!-- This description text is included in the Windows installer by default, see windows-jpackage.txt -->
     <description>JavaFX Spring</description>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>3.0.0-SNAPSHOT</version>
+                <version>2.7.4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -66,18 +64,17 @@
     <dependencies>
         <!-- This dependency is a normal Maven dependency, here mainly as an example. It brings in other transitive
          dependencies as well. You can remove it from your project (unless you happen to need to generate test data.  -->
-        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-community-dialects -->
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-community-dialects</artifactId>
-            <version>6.1.3.Final</version>
-        </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--            <type>jar</type>-->
+        <!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.xerial</groupId>-->
+        <!--            <artifactId>sqlite-jdbc</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -89,10 +86,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -121,19 +114,7 @@
         </resources>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-                <configuration>
-                    <forkCount>0</forkCount>
-                    <argLine>
-                        --add-modules ALL-SYSTEM
-                        --add-opens java.base/jdk.internal.util=ALL-UNNAMED
-                        --illegal-access=permit
-                    </argLine>
-                </configuration>
-            </plugin>
+
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -307,42 +288,6 @@
             </plugins>
         </pluginManagement>
     </build>
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
 
     <profiles>
         <profile>
