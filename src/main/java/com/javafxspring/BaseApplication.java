@@ -14,13 +14,13 @@ import javafx.stage.Stage;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 import java.io.*;
 
 import static javax.swing.filechooser.FileSystemView.getFileSystemView;
 
-
-@SpringBootApplication()
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class BaseApplication extends Application implements CommandLineRunner, Log {
     public static File outputFile;
     private final Plugin[] plugins = new Plugin[]{new StandardMenus(), new HelloWorld(), new FileDrop(),
@@ -102,4 +102,6 @@ public class BaseApplication extends Application implements CommandLineRunner, L
         stage.toFront();
         stage.setAlwaysOnTop(false);
     }
+
+
 }
