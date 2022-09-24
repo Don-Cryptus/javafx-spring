@@ -96,7 +96,7 @@ public class BaseApplication extends Application implements CommandLineRunner, L
         statusLabel.setText("Ready.");
 
         stage.show();
-        //put window to front to avoid it to be hide behind other.
+        //put window to front to avoid it to be hid behind others.
         stage.setAlwaysOnTop(true);
         stage.requestFocus();
         stage.toFront();
